@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer detection & Classification</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <div class="logo">Cancer detection & Classification</div>
+        <div class="nav-links">
+            <a href="#">Records</a>
+            <!--<a href="#">Link 2</a>
+            <a href="#">Link 3</a>-->
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="main">
+        <div class="left-pane">
+            <img src="{{url_for('static', filename='images/img1.png')}}" alt="">
+        </div>
+
+        <div class="right-pane">
+
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+                <p class="title">Cancer Detection & Classification</p>
+
+                <!-- Name div-->
+                <div class="name-div">
+                    <p>Patient name</p>
+                    <input type="text" class="name-field" name="patient-name">
+                </div>
+
+                <!-- Sex -->
+                <div class="sex-div">
+                    <p>Sex</p>
+                    <input type="text" class="sex-field" name="patient-sex">
+                </div>
+
+                <!-- Age -->
+                <div class="age-div">
+                    <p>Age</p>
+                    <input type="text" class="age-field" name="patient-age">
+                </div>
+
+                <!--Choose file button-->
+                <div class="choose-files-div">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
+                        file</label>
+                    <input
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        aria-describedby="file_input_help" id="file_input" name="image" type="file">
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF
+                        (MAX.
+                        800x400px).</p>
+                </div>
+                {{class_name}}
+
+                <!--Upload button-->
+                <input type="submit" class="button button-3d button-rounded" value="Detect & Classify" id="upload-btn">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="{{url_for('static', filename='js/snowstorm.js')}}"></script>
+    <script>
+        snowStorm.snowColor = '#e6e6e6';   // blue-ish snow!?
+        snowStorm.flakesMaxActive = 65;    // show more snow on screen at once
+        snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+    </script>
+
+</body>
+
+</html>

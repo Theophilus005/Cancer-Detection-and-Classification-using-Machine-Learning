@@ -1,0 +1,13 @@
+Cancers with neutral images
+1. Kidney cancer
+2. oral cancer
+
+Cancers without neutral images
+1. ALL
+2. Brain cancer
+3. Breast cancer
+4. Cervical cancer
+5. Lung and Colon cancer
+6. Lymphoma
+
+Credit the datasets you used for the work

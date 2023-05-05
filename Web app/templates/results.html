@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer detection & Classification</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <div class="logo">Cancer detection & Classification</div>
+        <div class="nav-links">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="main">
+        <div class="left-pane">
+
+            <form action="/" method="POST">
+                    
+                <p class="title">Results from model</p>
+                <p class="result-title">Patient Details</p>
+
+                <!-- Name div-->
+                <div class="name-div" id="results">
+                    <p>Patient name:&nbsp;</p>
+                    <p>{{patient_name}}</p>
+                </div>
+
+                <!-- Sex -->
+                <div class="sex-div" id="results">
+                    <p>Sex:&nbsp;</p>
+                    <p>{{patient_sex}}</p>
+                </div>
+
+                <!-- Age -->
+                <div class="age-div" id="results">
+                    <p>Age:&nbsp;</p>
+                    <p>{{patient_age}}</p>
+                </div>
+
+                <p class="result-title">Cancer Status</p>
+
+                 <!-- Cancer Type -->
+                 <div class="age-div" id="results">
+                    <p>Cancer Type:&nbsp;</p>
+                    <p>{{cancer_type}}</p>
+                </div>
+
+                <div class="age-div" id="results">
+                    <p>Category:&nbsp;</p>
+                    <p>{{class_name}}</p>
+                </div>
+
+                <div class="age-div" id="results">
+                    <p>Confidence:&nbsp;</p>
+                    <p>{{confidence2}}</p>
+                </div>
+
+                <!--Upload button-->
+                <a href="/" class="button button-3d button-rounded" id="upload-btn">Print Results</a>
+
+            </form>
+        </div>
+
+        <div class="right-pane">
+            <img src="{{url_for('static', filename='images/img2.png')}}" alt="">
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="{{url_for('static', filename='js/snowstorm.js')}}"></script>
+    <script>
+        snowStorm.snowColor = '#e6e6e6';   // blue-ish snow!?
+        snowStorm.flakesMaxActive = 65;    // show more snow on screen at once
+        snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+    </script>
+
+</body>
+
+</html>
