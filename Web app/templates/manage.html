@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer detection & Classification</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+        integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <div class="logo"> <a href="/">Cancer detection & Classification</a></div>
+        <div class="nav-links">
+            <a href="/manage"><i class="fa-solid fa-users" id="db-icon"></i>Manage Users</a>
+            <a href="/records"><i class="fa-solid fa-database" id="db-icon"></i>Records</a>
+            <a href="#"><i class="fa-solid fa-chart-simple" id="db-icon"></i></i>Model Statistics</a>
+            <a href="/account"><i class="fa-solid fa-user-doctor" id="db-icon"></i>Account</a>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="main">
+
+        <div class="left-pane-manage">
+
+            <div class="user-table">
+
+                <div class="manage-table-heading">
+                    <div class="username-heading">Username</div>
+                    <div class="account-type">Account type</div>
+                    <div class="delete">Delete</div>
+                </div>
+
+                {%for i in range(0, len)%}
+                <div class="manage-table-heading" id="row">
+                    <div class="username-heading">{{users[i]["username"]}}</div>
+                    <div class="account-type">{{users[i]["account_type"]}}</div> 
+                    {% if users[i]["account_type"] != "super admin" %}
+                    <div class="delete"><a href="/delete_user?id={{users[i]['_id']}}"><i class="fa-solid fa-trash" id="delete"></a></i></div>
+                    {% else %}
+                    <div class="delete"></div>
+                    {% endif %}
+                </div>
+                {%endfor%}
+
+<!--                <div class="manage-table-heading" id="row">
+                    <div class="username-heading">Theophilus</div>
+                    <div class="account-type">Super Admin</div>
+                    <div class="delete"><a href="https://<dbname>.restdb.io/rest/blog/588f439418f328ec5e024277"><i class="fa-solid fa-trash" id="delete"></i></a></div>
+                </div>
+
+                <div class="manage-table-heading" id="row">
+                    <div class="username-heading">Username</div>
+                    <div class="account-type">Account type</div>
+                    <div class="delete"><i class="fa-solid fa-trash" id="delete"></i></div>
+                </div>
+
+                <div class="manage-table-heading" id="row">
+                    <div class="username-heading">Username</div>
+                    <div class="account-type">Account type</div>
+                    <div class="delete"><i class="fa-solid fa-trash" id="delete"></i></div>
+                </div>-->
+
+            </div>
+        </div>
+
+        <div class="right-pane">
+
+            <form action="/manage" method="POST" enctype="multipart/form-data">
+
+                <div class="add-user-text-div">
+                    <i class="fa-solid fa-user-plus" id="add-user-icon"></i>
+                    <p class="add-user-text">Add User</p>
+                </div>
+
+                <!-- Sex -->
+                <div class="sex-div">
+                    <p>Username</p>
+                    <input type="text" class="sex-field" name="username">
+                </div>
+
+                <!-- Age -->
+                <div class="age-div">
+                    <p>Account type</p>
+                    <select name="account_type" class="age-field" id="account_type">
+                        <option value="admin">Admin</option>
+                        <option value="super admin">Super Admin</option>
+                    </select>
+                </div>
+
+                <div class="password-show">
+                    <p>Password: {{password}}</p>
+                </div>
+                <!--Upload button-->
+                <input type="submit" class="button button-3d button-rounded" value="Add User" id="password-btn">
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="{{url_for('static', filename='js/snowstorm.js')}}"></script>
+    <script>
+        snowStorm.snowColor = '#e6e6e6';   // blue-ish snow!?
+        snowStorm.flakesMaxActive = 65;    // show more snow on screen at once
+        snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

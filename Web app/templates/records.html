@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer detection & Classification</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+        integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <div class="logo"> <a href="/">Cancer detection & Classification</a></div>
+        <div class="nav-links">
+            <a href="/manage"><i class="fa-solid fa-users" id="db-icon"></i>Manage Users</a>
+            <a href="/records"><i class="fa-solid fa-database" id="db-icon"></i>Records</a>
+            <a href="#"><i class="fa-solid fa-chart-simple" id="db-icon"></i></i>Model Statistics</a>
+            <a href="/account"><i class="fa-solid fa-user-doctor" id="db-icon"></i>Account</a>
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="main">
+
+        <div class="left-pane-manage" id="records">
+
+            <div class="user-table">
+
+                <div class="manage-table-heading">
+                    <div class="patient-name" id="result-row">Patient name</div>
+                    <div class="age-records" id="result-row">Age</div>
+                    <div class="sex-records" id="result-row">Sex</div>
+                    <div class="cancer_type" id="result-row">Cancer type</div>
+                    <div class="cancer_class" id="result-row">class</div>
+                    <div class="date" id="result-row">Date</div>
+                    <div class="doctor" id="result-row">Doctor</div>
+                    <div class="delete">Delete</div>
+                </div>
+
+                {%for i in range(0, len)%}
+                <div class="manage-table-heading" id="row">
+                    <div class="patient-name" id="result-row">{{patients[i]["patient_name"]}}</div>
+                    <div class="age-records" id="result-row">{{patients[i]["patient_age"]}}</div>
+                    <div class="sex-records" id="result-row">{{patients[i]["patient_sex"]}}</div>
+                    <div class="cancer_type" id="result-row">{{patients[i]["cancer_type"]}}</div>
+                    <div class="cancer_class" id="result-row">{{patients[i]["class_name"]}}</div>
+                    <div class="date" id="result-row">{{patients[i]["date"][0:10]}}</div>
+                    <div class="doctor" id="result-row">{{patients[i]["doctor"]}}</div>
+                    <div class="delete"><a href="/delete_record?id={{patients[i]['_id']}}"><i class="fa-solid fa-trash" id="delete"></i></a></div>
+                </div>
+                {%endfor%}
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="{{url_for('static', filename='js/snowstorm.js')}}"></script>
+    <script>
+        snowStorm.snowColor = '#e6e6e6';   // blue-ish snow!?
+        snowStorm.flakesMaxActive = 65;    // show more snow on screen at once
+        snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

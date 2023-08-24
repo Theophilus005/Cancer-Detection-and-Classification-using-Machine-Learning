@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer detection & Classification</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/button.css')}}">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+       
+
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="nav-bar">
+        <div class="logo">Cancer detection & Classification</div>
+        <div class="nav-links">
+            <a href="#"><i class="fa-solid fa-database" id="db-icon"></i>Records</a>
+            <!--<a href="#">Link 2</a>
+            <a href="#">Link 3</a>-->
+        </div>
+    </nav>
+
+    <!-- Container -->
+    <div class="main">
+        <form action="/login" class="login-form" method="post">
+
+            <p class="title" id="login-title">LOGIN</p>
+
+            <!-- Username -->
+            <div class="name-div" id="login">
+                <p>Username:&nbsp;</p>
+                <input type="text" class="name-field" name="username">
+            </div>
+
+            <!-- Password -->
+            <div class="name-div" id="login">
+                <p>Password:&nbsp;</p>
+                <input type="password" class="name-field" name="password">
+            </div>
+
+            <!--Login button-->
+            <input type="submit" class="button button-3d button-rounded" value="Login" id="login-btn">
+
+            <p>{{err_msg}}</p>
+
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="{{url_for('static', filename='js/snowstorm.js')}}"></script>
+     <script>
+        snowStorm.snowColor = '#e6e6e6';   // blue-ish snow!?
+        snowStorm.flakesMaxActive = 65;    // show more snow on screen at once
+        snowStorm.useTwinkleEffect = false; // let the snow flicker in and out of view
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
